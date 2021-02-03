@@ -39,9 +39,15 @@ class Question
      */
     private $badAnswers;
 
+    /**
+     * @ORM\OneToMany(targetEntity=UserQuestion::class, mappedBy="question")
+     */
+    private $userQuestions;
+
     public function __construct()
     {
         $this->badAnswers = new ArrayCollection();
+        $this->user = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -109,6 +115,36 @@ class Question
             // set the owning side to null (unless already changed)
             if ($badAnswer->getQuestion() === $this) {
                 $badAnswer->setQuestion(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|UserQuestion[]
+     */
+    public function getUser(): Collection
+    {
+        return $this->user;
+    }
+
+    public function addUser(UserQuestion $userQuestions): self
+    {
+        if (!$this->userQuestions->contains($userQuestions)) {
+            $this->userQuestions[] = $userQuestions;
+            $userQuestions->setQuestion($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(UserQuestion $userQuestions): self
+    {
+        if ($this->userQuestions->removeElement($userQuestions)) {
+            // set the owning side to null (unless already changed)
+            if ($userQuestions->getQuestion() === $this) {
+                $userQuestions->setQuestion(null);
             }
         }
 
