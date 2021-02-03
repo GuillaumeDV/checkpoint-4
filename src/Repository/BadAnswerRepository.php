@@ -22,19 +22,16 @@ class BadAnswerRepository extends ServiceEntityRepository
     // /**
     //  * @return BadAnswer[] Returns an array of BadAnswer objects
     //  */
-    /*
-    public function findByExampleField($value)
+    /*public function findNameByCategory($value)
     {
         return $this->createQueryBuilder('b')
-            ->andWhere('b.exampleField = :val')
+            //->select('b.name')
+            ->andWhere('b.category = :val')
             ->setParameter('val', $value)
-            ->orderBy('b.id', 'ASC')
-            ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
-    }
-    */
+    }*/
 
     /*
     public function findOneBySomeField($value): ?BadAnswer
