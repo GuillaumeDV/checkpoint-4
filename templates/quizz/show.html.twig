@@ -3,5 +3,11 @@
 {% block title %}Quizz{% endblock %}
 
 {% block body %}
-hello 
+<h1>Questions</h1>
+{% for question in questions %}
+    <div class="card-body">
+        <h2>{{ question.name }}</h2>
+        <a href="{{ path('show_question', {'id': question.id }) }}" class="btn btn-primary">Répondre</a>
+    </div>
+{% endfor %}
 {% endblock %}
