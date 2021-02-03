@@ -36,7 +36,8 @@ class QuizzController extends AbstractController
             'controller_name' => 'QuizzController',
             'questions' => $questions->findBy([
             'category' => $category
-            ])
+            ]),
+            'category' => $category,
         ]);
     }
 
