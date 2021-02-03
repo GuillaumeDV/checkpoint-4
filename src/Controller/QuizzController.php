@@ -9,6 +9,7 @@ use App\Entity\UserQuestion;
 use App\Repository\CategoryRepository;
 use App\Repository\QuestionRepository;
 use App\Repository\BadAnswerRepository;
+use App\Repository\UserQuestionRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,14 +31,16 @@ class QuizzController extends AbstractController
     /**
      * @Route("/quizz/{name}", name="show_quizz")
      */
-    public function showCategory(QuestionRepository $questions, Category $category): Response
+    public function showCategory(QuestionRepository $questions, Category $category, UserQuestionRepository $infos): Response
     {
+        $advance = $infos->findBy(['user' => $this->getUser()]);
         return $this->render('quizz/show.html.twig', [
             'controller_name' => 'QuizzController',
             'questions' => $questions->findBy([
-            'category' => $category
+                'category' => $category
             ]),
             'category' => $category,
+            'advances' => $advance,
         ]);
     }
 
