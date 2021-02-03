@@ -13,11 +13,10 @@ class QuizzController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index(CategoryRepository $category): Response
+    public function index(): Response
     {
         return $this->render('quizz/index.html.twig', [
             'controller_name' => 'QuizzController',
-            'category' => $category->findAll(),
         ]);
     }
 }
