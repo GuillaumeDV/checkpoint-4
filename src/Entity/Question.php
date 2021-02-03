@@ -38,7 +38,7 @@ class Question
     private $category;
 
     /**
-     * @ORM\OneToMany(targetEntity=BadAnswer::class, mappedBy="question")
+     * @ORM\OneToMany(targetEntity=BadAnswer::class, mappedBy="question", cascade={"persist"})
      */
     private $badAnswers;
 

@@ -27,7 +27,7 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     {% for category in categories.infoNav %}
-                        <li><a class="dropdown-item" href="#">{{ category.name }}</a></li>
+                        <li><a class="dropdown-item" href="{{ path('show_quizz', {'name': category.name }) }}">{{ category.name }}</a></li>
                     {% endfor %}
                     </ul>
                     </li>

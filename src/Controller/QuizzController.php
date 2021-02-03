@@ -19,4 +19,13 @@ class QuizzController extends AbstractController
             'controller_name' => 'QuizzController',
         ]);
     }
+    /**
+     * @Route("/quizz/{name}", name="show_quizz")
+     */
+    public function show(): Response
+    {
+        return $this->render('quizz/show.html.twig', [
+            'controller_name' => 'QuizzController',
+        ]);
+    }
 }

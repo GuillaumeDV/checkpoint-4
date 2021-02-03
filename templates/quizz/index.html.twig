@@ -9,7 +9,7 @@
         <div class="card col-md-6">
             <div class="card-body">
                 <h2>{{ category.name }}</h2>
-                <a href="#" class="btn btn-primary">Démarrer le Quizz</a>
+                <a href="{{ path('show_quizz', {'name': category.name }) }}" class="btn btn-primary">Démarrer le Quizz</a>
             </div>
         </div>
     {% endfor %}
