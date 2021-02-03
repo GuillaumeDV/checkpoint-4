@@ -7,6 +7,18 @@
     <div class="card">
         <div class="card-body">
             <h1>{{ question }}</h1>
+            {{ form_start(form) }}
+            {{ form_widget(form.response) }}
+            <div class="row">
+            <div class="col-md-9">
+            <h2>{{ message }}</h2>
+            <button type="submit" class="btn btn-primary mb-2">confirmer votre réponse</button>
+            </div>
+            {{ form_end(form) }}
+            <div class="col-md-3">
+            <a href="{{ path('show_quizz', {'name': redirect }) }}" class="btn btn-primary mb-2">Revenir au choix des questions </a>
+            </div>
+            </div>
         </div>
     </div>
     </div>
