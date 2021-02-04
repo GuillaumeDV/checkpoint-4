@@ -48,9 +48,9 @@ class QuizzController extends AbstractController
             $percent = number_format((100/count($questionByCategory))*$increment, 2, '.', '') . " %";
             array_push($percentByCategory, $percent);
         }
-        dd($percentByCategory);
         return $this->render('quizz/index.html.twig', [
             'controller_name' => 'QuizzController',
+            'percents' => $percentByCategory,
         ]);
     }
     /**

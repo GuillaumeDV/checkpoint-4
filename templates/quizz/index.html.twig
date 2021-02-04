@@ -4,15 +4,34 @@
 
 {% block body %}
 <div class="container">
+    {% if app.user %}
     <div class="row">
+    {% set val = 0 %}
     {% for category in categories.infoNav %}
-        <div class="card col-md-6">
-            <div class="card-body">
-                <h2>{{ category.name }}</h2>
-                <a href="{{ path('show_quizz', {'name': category.name }) }}" class="btn btn-primary">Démarrer le Quizz</a>
+        <div class="card col-md-6" 
+        {% if percents[val] == "100.00 %"%}
+            style="background-color:green;"
+        {% endif %}
+        >
+            <div class="card-body" >
+                <div class="row">
+                    <div class="col-md-10">
+                        <h2>{{ category.name }}</h2>
+                        <a href="{{ path('show_quizz', {'name': category.name }) }}" class="btn btn-primary">Démarrer le Quizz</a>
+                    </div>
+                    <div class="col-md-2">
+                        <p><strong>{{ percents[val] }}</strong></p>
+                    </div>
+                </div>
             </div>
         </div>
+        {% set val = val + 1 %}
     {% endfor %}
     </div>
+    {% else %}
+        <div>
+            <img src="https://learneuse.com/wp-content/uploads/2020/08/quizz-culture-generale_thumb.gif" alt="">
+        </div>
+    {% endif %}
 </div>
 {% endblock %}
