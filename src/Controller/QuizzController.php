@@ -22,10 +22,35 @@ class QuizzController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index(): Response
-    {
+    public function index(
+        CategoryRepository $categories,
+        QuestionRepository $questions,
+        UserQuestionRepository $infos
+        ): Response {
+        $percentByCategory = array();
+        $categoryName = $categories->findAll();
+        for ($i = 0; $i < count($categories->findAll()); $i++) {
+            $increment = 0;
+            $category = $categoryName[$i];
+            $questionByCategory = $questions->findBy([
+                'category' =>$category
+            ]);
+            $advance = $infos->findBy(['user' => $this->getUser()]);
+            for ($j = 0; $j< count($questionByCategory); $j++) {
+                $question = $questionByCategory[$j];
+                for ($k = 0; $k< count($advance); $k++) {
+                    $answerUser = $advance[$k];
+                    if ($question === $answerUser->getQuestion()) {
+                        $increment += 1;
+                    }
+                }
+            }
+            $percent = number_format((100/count($questionByCategory))*$increment, 2, '.', '') . " %";
+            array_push($percentByCategory, $percent);
+        }
         return $this->render('quizz/index.html.twig', [
             'controller_name' => 'QuizzController',
+            'percents' => $percentByCategory,
         ]);
     }
     /**

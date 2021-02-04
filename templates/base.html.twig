@@ -32,10 +32,10 @@
                     </ul>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="#">Votre espace</a>
+                    <a class="nav-link" href="{{ path('profile', {'id': app.user.id }) }}">Votre espace</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="#">se déconnecter</a>
+                    <a class="nav-link" href="{{ path('app_logout')}}">se déconnecter</a>
                     </li>
                     {% else %}
                     <li class="nav-item">
