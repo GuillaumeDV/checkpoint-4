@@ -1,3 +1,42 @@
 body {
     background-color: lightgray;
 }
+.for_home_img {
+    margin-top:3%;
+}
+
+.non_connect {
+    padding:3%;
+}
+
+.non_connect_text {
+    text-align: center;
+}
+
+.title_connect {
+    padding: 3%;
+    text-align:center;
+}
+
+.card_category {
+    margin:2%;
+}
+
+.response {
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.form-check {
+    width:48%;
+    text-align:center;
+    margin:1%;
+    padding: 2%;
+    border: solid;
+    border-color:#eb6864;
+    border-radius:10px;
+}
+
+.form-check:hover{
+    background-color: #eb6864;
+}

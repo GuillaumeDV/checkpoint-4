@@ -5,19 +5,25 @@
 {% block body %}
 <div class="container">
     {% if app.user %}
+    <div class="title_connect">
+        <h1> Les Quizzs </h1>
+    </div>
     <div class="row">
     {% set val = 0 %}
     {% for category in categories.infoNav %}
-        <div class="card col-md-6" 
+        <div class="card col-md-5 card_category 
         {% if percents[val] == "100.00 %"%}
-            style="background-color:green;"
+            bg-success
         {% endif %}
-        >
+        ">
             <div class="card-body" >
                 <div class="row">
                     <div class="col-md-10">
                         <h2>{{ category.name }}</h2>
+                        {% if percents[val] == "100.00 %"%}
+                        {% else %}
                         <a href="{{ path('show_quizz', {'name': category.name }) }}" class="btn btn-primary">Démarrer le Quizz</a>
+                        {% endif %}
                     </div>
                     <div class="col-md-2">
                         <p><strong>{{ percents[val] }}</strong></p>
@@ -29,8 +35,34 @@
     {% endfor %}
     </div>
     {% else %}
-        <div>
-            <img src="https://learneuse.com/wp-content/uploads/2020/08/quizz-culture-generale_thumb.gif" alt="">
+        <div class="card for_home_img">
+            <div class="card-boddy">
+                <div class="card non_connect">
+                <div class="row">
+                    <div class="col-md-5">
+                    <img class ="img_home" src="https://media1.giphy.com/media/ieDtvt9cJK4Yt7FhBn/giphy.gif" alt="">
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-6">
+                        <div class="non_connect_text">
+                            <h1>WildQuizz !</h1>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem nihil pariatur rerum impedit, facilis quisquam sequi excepturi consequuntur non perferendis obcaecati aliquam fuga in aperiam omnis dolorum voluptatibus quasi sunt!</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae maiores excepturi vitae eius dolorum pariatur porro ipsa! Similique, nam? Debitis illo tempore eveniet, omnis dolores ipsam commodi in quod porro?</p>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit, nam, exercitationem nesciunt aperiam, ad animi saepe explicabo atque maxime labore autem consequatur mollitia vitae quis dignissimos placeat beatae eligendi natus.</p>
+                        </div>
+                        <div class="non_connect_text">
+                        <a class="btn btn-primary" href="{{ path('app_login')}}">Se Connecter</a>
+                        </div>
+                        <div class="non_connect_text">
+                        <strong >OU</strong>
+                        </div>
+                        <div class="non_connect_text">
+                        <a class="btn btn-primary" href="{{ path('app_register')}}">S'inscrire</a>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
         </div>
     {% endif %}
 </div>

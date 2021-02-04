@@ -6,19 +6,25 @@
 <div class="container">
     <div class="card">
         <div class="card-body">
-            <h1>Bienvenue {{ app.user.email }}</h1>
+            <div class="title_connect">
+                <h1>Bienvenue {{ app.user.email }}</h1>
+            </div>
             <div class="container">
+                <div>
+                    <h2>Statistique et Questions répondues</h2>
+                </div>
                 <div class="row">
-                    <div class="col-md-8">
-                        <h2>Statistique et Questions répondues</h2>
+                    <div class="progress col-md-10">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ progress }}%;"></div>
                     </div>
-                    <div class="col-md-4">
-                        <h2>Progression globale : {{ progress }} %</h2>
+                    <div class="col-md-2">
+                        <p>{{ progress|number_format }} %</p>
+                    </div>
                     </div>
                 </div>
                 {% for info in infos %}
                     <div class="container">
-                        <div class="card">
+                        <div class="card text-white bg-secondary mb-3">
                             <div class="card-body">
                                 <h3>{{ info.question.name }}</h3>
                                 <div class="row">
@@ -26,7 +32,7 @@
                                         <p> {{ info.question.answer }} </p>
                                     </div>
                                     <div class="col-md-3">
-                                        <p> {{ info.question.category.name }} </p>
+                                        <p> quizz : {{ info.question.category.name }} </p>
                                     </div>
                                  </div>
                             </div>

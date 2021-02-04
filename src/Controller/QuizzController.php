@@ -74,6 +74,7 @@ class QuizzController extends AbstractController
      */
     public function showQuestion(
         BadAnswerRepository $answer,
+        UserQuestionRepository $verify,
         Question $question,
         Request $request,
         EntityManagerInterface $manager
@@ -107,13 +108,20 @@ class QuizzController extends AbstractController
                     $message = 'Bravo bonne réponse !';
                     //dd($question->getId());
                     //dd($this->getUser());
-                    $validated = new UserQuestion;
-                    $validated->setIsGood(1)
-                              ->setQuestion($question)
-                              ->setUser($this->getUser());
-                    
-                    $manager->persist($validated);
-                    $manager->flush();
+                    $verifyAnswer = $verify->findBy([
+                        'question' => $question,
+                        'user' => $this->getUser(),
+                    ]);
+                    if (!isset($verifyAnswer[0])) {
+
+                        $validated = new UserQuestion;
+                        $validated->setIsGood(1)
+                                  ->setQuestion($question)
+                                  ->setUser($this->getUser());
+                        
+                        $manager->persist($validated);
+                        $manager->flush();
+                    }
                 }
             }
 
