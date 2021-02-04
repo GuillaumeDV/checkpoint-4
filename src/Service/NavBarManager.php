@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class NavBarManager extends AbstractController
 {
-    private $info;
+    private $categories;
 
     public function __construct(CategoryRepository $categories)
     {
