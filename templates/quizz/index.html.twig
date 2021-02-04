@@ -18,16 +18,20 @@
         ">
             <div class="card-body" >
                 <div class="row">
-                    <div class="col-md-10">
+                    <div class="col-md-9">
                         <h2>{{ category.name }}</h2>
                         {% if percents[val] == "100.00 %"%}
                         {% else %}
                         <a href="{{ path('show_quizz', {'name': category.name }) }}" class="btn btn-primary">Démarrer le Quizz</a>
                         {% endif %}
                     </div>
-                    <div class="col-md-2">
-                        <p><strong>{{ percents[val] }}</strong></p>
+                    <div class="col-md-3">
+                        <p><strong>{{ percents[val]|number_format }} %</strong></p>
+                        
                     </div>
+                </div>
+                <div class="progress for_progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated " role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: {{ percents[val]|number_format }}%;"></div>
                 </div>
             </div>
         </div>

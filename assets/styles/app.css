@@ -40,3 +40,7 @@ body {
 .form-check:hover{
     background-color: #eb6864;
 }
+
+.for_progress {
+    margin-top: 10px;
+}
